@@ -1,0 +1,17 @@
+version: '3'
+services:
+  elsword_guide:
+    container_name: elsword_guide
+    restart: unless-stopped
+    build:
+      context: '.'
+      dockerfile: 'Dockerfile'
+    ports:
+      - 8000:8000
+    volumes:
+      - ./db.sqlite3:/home/app/db.sqlite3
+    env_file:
+      - ./config.env
+    logging:
+      options:
+        max-size: 50m
